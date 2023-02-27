@@ -15,17 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import signup
+from accounts.views import signup, profile
 from .views import home
 
 urlpatterns = [
+    path('', home, name="home"),
     path('admin/', admin.site.urls),
     # https://docs.djangoproject.com/fr/4.1/topics/auth/default/ voir vues d'authentification
     # dans ce cas on concatène compte avec login, logout...etc
     path('compte/', include('django.contrib.auth.urls')),
-    path('', home, name="home"),
+    path('accounts/profile/', profile),
+
     path('compte/nouveau/', signup, name="signup"),
 ]
+
+# on peut modifier la page quand on est logé, dans settings LOGIN_REDIRECT_URL
 
 # il faut penser à creer un dossier registration avec login.html dedans.
 
