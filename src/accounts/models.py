@@ -30,3 +30,13 @@ class CustomUser(AbstractBaseUser):
     zip_code = models.CharField(max_length=5, blank=False)
 
     USERNAME_FIELD = "email"
+    objects = CustomUserManager()
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    class Meta:
+        verbose_name = "Utilisateur"
