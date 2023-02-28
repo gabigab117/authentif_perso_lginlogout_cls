@@ -1,21 +1,6 @@
-"""authentif_perso URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import signup, profile
+from accounts.views import signup
 from .views import home
 
 urlpatterns = [
@@ -24,12 +9,14 @@ urlpatterns = [
     # https://docs.djangoproject.com/fr/4.1/topics/auth/default/ voir vues d'authentification
     # dans ce cas on concatène compte avec login, logout...etc
     path('compte/', include('django.contrib.auth.urls')),
-    path('accounts/profile/', profile),
+    # path('accounts/profile/', profile),
 
     path('compte/nouveau/', signup, name="signup"),
 ]
 
-# on peut modifier la page quand on est logé, dans settings LOGIN_REDIRECT_URL
+# import django.contrib.auth.urls
+# on peut modifier la page quand on est logué, dans settings LOGIN_REDIRECT_URL
+# pareil avec logout LOGOUT_REDIRECT_URL
 
 # il faut penser à creer un dossier registration avec login.html dedans.
 

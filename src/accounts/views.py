@@ -15,5 +15,5 @@ def signup(request):
     return render(request, "accounts/signup.html", {"form": form})
 
 
-def profile(request):
-    return HttpResponse(f"slt {request.user.email}")
+# def profile(request):
+#     return HttpResponse(f"slt {request.user.email}")
